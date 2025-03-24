@@ -1,6 +1,9 @@
-@charset  "UTF-8";
+/* ====================== 字符集声明 ====================== */
+@charset "UTF-8";
 
+/* ====================== CSS变量定义 ====================== */
 :root {
+  /* 基础颜色 */
   --leo-white: #fff;
   --leo-white-op: rgba(255,255,255,0.2);
   --leo-black: #000;
@@ -9,9 +12,13 @@
   --leo-gray: #999999;
   --leo-gray-op: #9999992b;
   --leo-vip: #e5a80d;
+  
+  /* 主题派生变量 */
   --leo-main: var(--leo-theme);
   --leo-main-op: var(--leo-theme-op);
   --leo-main-none: var(--leo-theme-none);
+  
+  /* 阴影系统 */
   --leo-shadow-theme: 0 8px 12px -3px var(--leo-theme-op);
   --leo-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0,.15);
   --leo-shadow-main: 0 8px 12px -3px var(--leo-main-op);
@@ -21,18 +28,28 @@
   --leo-shadow-yellow: 0px 38px 77px -26px rgba(255, 201, 62,.12);
   --leo-shadow-red: 0 8px 12px -3px #ee7d7936;
   --leo-shadow-green: 0 8px 12px -3px #87ee7936;
+  
+  /* 渐变效果 */
   --leo-logo-color: linear-gradient(215deg,#4584ff 0%,#cf0db9 100%);
+  
+  /* 组件计时 */
   --leo-snackbar-time: 5s;
+  
+  /* 边框系统 */
   --style-border: 1px solid var(--leo-card-border);
   --style-border-always: 1px solid var(--leo-card-border);
   --style-border-hover: 1px solid var(--leo-main);
   --style-border-hover-always: 1px solid var(--leo-main);
   --style-border-dashed: 1px dashed var(--leo-theme-op);
+  
+  /* 主题色 */
   --leo-theme: #4259ef;
   --leo-theme-op: #4259ef23;
   --leo-theme-op-deep: #4259efdd;
   --leo-theme-op-light: #4259ef0d;
   --leo-theme-none: #4259ef01;
+  
+  /* 扩展颜色 */
   --leo-blue: #425AEF;
   --leo-red: #d80020;
   --leo-red-op: #d800201a;
@@ -45,41 +62,43 @@
   --leo-yellow-op: #d99c001a;
   --leo-orange: #e38100;
   --leo-purple: #7a60d2;
+  
+  /* 文字颜色 */
   --leo-fontcolor: #363636;
+  --leo-secondtext: rgba(60, 60, 67, 0.6);
+  --leo-scrollbar: rgba(60, 60, 67, 0.4);
+  
+  /* 背景系统 */
   --leo-background: #f7f9fe;
   --leo-navbg: rgba(22, 22, 23, 0.91);
   --leo-reverse: #000;
   --leo-maskbg: rgba(255, 255, 255, 0.6);
   --leo-maskbgdeep: rgba(255, 255, 255, 0.85);
-  --leo-hovertext: var(--leo-main);
   --leo-ahoverbg: #F7F7FA;
-  --leo-lighttext: var(--leo-main);
-  --leo-secondtext: rgba(60, 60, 67, 0.6);
-  --leo-scrollbar: rgba(60, 60, 67, 0.4);
+  
+  /* 卡片系统 */
   --leo-card-btn-bg: #1C1C1F;
   --leo-post-blockquote-bg: #fafcff;
   --leo-post-tabs-bg: #f2f5f8;
   --leo-secondbg: #F5F5F7;
-  --leo-shadow-nav: 0 5px 12px -5px rgba(102, 68, 68, 0.05);
   --leo-card-bg: #fff;
   --leo-card-bg-op: var(--leo-black-op);
   --leo-card-bg-none: rgba(255, 255, 255, 0);
-  --leo-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
-  --leo-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
-  --leo-card-border: #e3e8f7;
-  --leo-shadow-border: 0 8px 16px -4px #2c2d300c;
-  --style-border-forever: 2px solid var(--leo-main);
-  --leo-navbgs: #fff(0, 0, 0, 0.8);  /* 初始导航背景 */
-  --leo-card-bgs: #1c1c1f;             /* 滚动后背景 */
-  --leo-fontcolors: #fff;           /* 滚动后文字颜色 */
-  --leo-whites: #333;               /* 初始文字颜色 */
+  
+  /* 导航动态变量 */
+  --leo-navbgs: #fff(0, 0, 0, 0.8);
+  --leo-card-bgs: #1c1c1f;
+  --leo-fontcolors: #fff;
+  --leo-whites: #333;
 }
 
+/* ====================== 全局基础样式 ====================== */
 ::selection {
   background: var(--leo-fontcolor);
   color: var(--leo-background);
 }
 
+/* ====================== 关键帧动画 ====================== */
 @keyframes flow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -111,6 +130,7 @@
   }
 }
 
+/* ====================== 主体布局 ====================== */
 body {
   background: var(--leo-background);
   display: flex;
@@ -126,12 +146,12 @@ body .need-padding {
   width: 90%;
 }
 
+/* ====================== 通用元素样式 ====================== */
 a {
   text-decoration:none;
   user-select:none;
   -webkit-user-drag: none;
 }
-
 
 span {
   user-select:none;
@@ -158,6 +178,7 @@ img {
   -webkit-user-drag: none;
 }
 
+/* ====================== 导航系统 ====================== */
 .nav {
   display: flex;
   width: 100%;
@@ -175,7 +196,7 @@ img {
 }
 
 .nav.top {
-  background: var(--leo-navbgs) !important; /* 强制优先级 */
+  background: var(--leo-navbgs) !important;
   color: var(--leo-whites) !important;
 }
 
@@ -222,7 +243,6 @@ img {
 .nav-right .nav-menu {
   display: none;
 }
-
 
 a.site-logo {
   display: flex;
@@ -275,7 +295,8 @@ a.nav-item {
   padding: 4px 8px;
   border-radius: 16px;
 }
-/* 初始状态 */
+
+/* 导航状态控制 */
 .nav:not(.nav-scrolled) {
   background: rgba(255, 255, 255, 0.9) !important;
   backdrop-filter: blur(10px);
@@ -286,9 +307,8 @@ a.nav-item {
   opacity: 0.9;
 }
 
-/* 滚动状态 */
 .nav.nav-scrolled {
-  background: #000000 !important;
+  background: #00001EEE !important;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 .nav.nav-scrolled a.nav-item,
@@ -300,7 +320,7 @@ a.nav-item {
 
 a.nav-item:hover {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.05);;
+  background: rgba(255, 255, 255, 0.05);
   color: var(--leo-fontcolors);
 }
 
@@ -313,6 +333,7 @@ a.nav-item:hover {
   align-items: center;
 }
 
+/* ====================== 首屏内容 ====================== */
 .first-stack {
   display: flex;
   justify-content: space-between;
@@ -347,24 +368,15 @@ span.subfont {
 }
 
 span.highlight {
-
   background-image: -webkit-linear-gradient(241deg, #ea6044 39%, #dc5083 50%, #9a6df7 67%, #3f8def 81%);
-  
   background-image: linear-gradient(209deg, #ea6044 39%, #dc5083 50%, #9a6df7 67%, #3f8def 81%);
-  
   -webkit-background-clip: text;
-  
   background-clip: text;
-  
   position: relative;
-  
   color: transparent;
-
   background-size: 200% auto;
-
   animation: flow 6s linear infinite;
-  
-  }
+}
 
 a.about-button {
   display: flex;
@@ -387,6 +399,7 @@ a.about-button:hover {
   box-shadow: 0px 12px 12px -9px rgba(5, 51, 137, 0.29);
 }
 
+/* ====================== 产品区块 ====================== */
 .product-group {
   margin: 0;
   width: 100%;
@@ -407,7 +420,6 @@ h2.group-title {
   margin-top: 60px;
   flex-direction: row;
   flex-wrap: wrap;
-  
 }
 
 .group-item {
@@ -475,7 +487,7 @@ span.linkbotton-tips {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1; /* 这里是超出几行省略 */
+  -webkit-line-clamp: 1;
   overflow: hidden;
 }
 
@@ -499,6 +511,7 @@ a.linkbutton:active {
   filter: brightness(0.8);
 }
 
+/* ====================== 页脚系统 ====================== */
 .footer {
   padding: 60px 0 60px 0;
   display: flex;
@@ -531,8 +544,7 @@ a.linkbutton:active {
   flex-direction: column;
 }
 
-/* banner */
-
+/* ====================== Banner系统 ====================== */
 .product-banner {
   background-image: linear-gradient(180deg, #02162A 0%, #00001e 100%);
   width: 100%;
@@ -651,6 +663,7 @@ a.second-link:hover {
   line-height: 1;
 }
 
+/* ====================== 特殊卡片 ====================== */
 .special-card {
   background: #131202;
   width: 90%;
@@ -710,18 +723,19 @@ a.second-link:hover {
   z-index: 0;
 }
 
+/* ====================== 作者信息卡片 ====================== */
 .avatar-discription {
   display: flex;
   flex-direction: row;
   align-content: center;
   padding: 24px;
-  background: var(--leo-card-bg);
+  background: var(--heo-card-bg);
   margin: 18px 5% 0;
   border-radius: 12px;
   line-height: 1.5;
   max-width: 1200px;
   border: var(--style-border-always);
-  box-shadow: var(--leo-shadow-border);
+  box-shadow: var(--heo-shadow-border);
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: 1200px;
@@ -729,12 +743,13 @@ a.second-link:hover {
 
 .avatar-discription-text {
   display: flex;
-  font-size: 15px;
+  font-size: 16px;
   text-align: left;
   width: calc(100% - 330px);
   padding: 20px 40px;
   border-radius: 12px;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .avatar-discription-text p {
@@ -775,6 +790,7 @@ span.avatar-name {
   max-width: 200px;
 }
 
+/* ====================== 响应式设计 ====================== */
 @media screen and (max-width: 1200px) {
   .group-item {
     width: 50%;
@@ -783,7 +799,6 @@ span.avatar-name {
   .special-card {
     display: none;
   }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -830,11 +845,11 @@ span.avatar-name {
   }
 
   .show-menu .nav {
-    background: var(--leo-fontcolor);
+    background: var(--leo-fontcolors);
   }
 
   .show-menu .nav-content {
-    background: var(--leo-fontcolor);
+    background: #00000000;
   }
 
   .nav-right .nav-item {
@@ -843,10 +858,16 @@ span.avatar-name {
 
   .nav-right .nav-menu {
     display: flex;
-    color: var(--leo-white);
+    color: var(--leo-fontcolors);
     padding: 8px 0 8px 8px;
   }
 
+  .nav-menu {
+    fill: rgb(0, 0, 0);  /* 设置图标颜色为黑色 */
+}
+  .nav-scrolled .nav-menu {
+    fill: rgb(0, 0, 0);  /* 设置图标颜色为白色 */
+}
   .product-banner span.title {
     font-size: 40px;
     line-height: 46px;
@@ -857,14 +878,14 @@ span.avatar-name {
     position: fixed;
     flex-direction: column;
     top: 60px;
-    background: var(--leo-fontcolor);
+    background: #00001EEE;
     width: 100%;
     height: 0%;
     z-index: 10;
     align-items: center;
     overflow: hidden;
     transition: ease-in-out 0.3s;
-    opacity: 0;
+    opacity: 1;
   }
 
   .show-menu .menu-list {
@@ -875,15 +896,41 @@ span.avatar-name {
   .menu-list a.nav-item {
     padding: 8px 8px;
     font-size: 16px;
-    border-bottom: 1px solid #ffffff53;
     width: 90%;
     margin-left: 0;
+    color: white;
   }
 
   .show-menu .menu-list a.nav-item {
     padding: 12px 8px;
   }
   
+  .avatar-discription {
+    flex-direction: column;
+    margin: 18px 3% 0;
+    padding: 16px;
+  }
+
+  .avatar-discription-text {
+    width: 100%;
+    padding: 15px 0;
+    order: 2;
+  }
+
+  .avatar-info {
+    order: 1;
+    margin: 0 auto 20px;
+    padding: 0;
+  }
+
+  .avatar-discription-text p {
+    font-size: 14px;
+  }
+
+  .avatar-image {
+    max-width: 120px;
+  }
+
   .banner-pic {
     margin-top: 20px;
     height: 200px;
@@ -999,5 +1046,22 @@ span.avatar-name {
 
   .nav-center {
     display: none;
+  }
+
+  .avatar-discription {
+    margin: 12px 2% 0;
+    padding: 12px;
+  }
+
+  .avatar-discription-text {
+    padding: 12px 0;
+  }
+
+  .avatar-name {
+    font-size: 14px;
+  }
+
+  .avatar-title {
+    font-size: 12px;
   }
 }
